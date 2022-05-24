@@ -37,6 +37,7 @@ class TestExecuteProgram: DescribeSpec({
             ))
 
             //ASSERT:
+            microprocessor.programCounter.shouldBe(4)
             microprocessor.acumulatorA.shouldBe(32)
             microprocessor.acumulatorB.shouldBe(0)
         }
@@ -56,6 +57,7 @@ class TestExecuteProgram: DescribeSpec({
             ))
 
             //ASSERT:
+            microprocessor.programCounter.shouldBe(9)
             microprocessor.acumulatorA.shouldBe(15)
             microprocessor.acumulatorB.shouldBe(0)
         }
@@ -70,6 +72,7 @@ class TestExecuteProgram: DescribeSpec({
             ))
 
             //ASSERT:
+            microprocessor.programCounter.shouldBe(4)
             microprocessor.acumulatorA.shouldBe(127)
             microprocessor.acumulatorB.shouldBe(23)
         }
