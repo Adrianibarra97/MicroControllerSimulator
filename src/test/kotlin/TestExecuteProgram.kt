@@ -1,23 +1,27 @@
+import instrunctions.NOP
+import microprocessor.Microprocessor
 import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.shouldBe
+import microprocessor.MicroprocessorImpl
 
 class TestExecuteProgram: DescribeSpec({
     isolationMode = IsolationMode.InstancePerTest
 
     describe("Given a microprocessor.") {
         //ARRANGE:
-        val micro: Microprocessor = MicroprocessorImpl()
+        val microprocessor: Microprocessor = MicroprocessorImpl()
 
         it("Successfully run the NOP program.") {
             //ACT:
-            micro.run(listOf(
+            microprocessor.run(listOf(
                 NOP(),
                 NOP(),
                 NOP(),
             ))
 
             //ASSERT:
-            micro.programCounter.shouldBeExactly(3)
+            microprocessor.programCounter.shouldBe(3)
         }
     }
 })
