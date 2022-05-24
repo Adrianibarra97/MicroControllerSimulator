@@ -11,7 +11,7 @@ interface Microprocessor {
     fun advanceProgram()
     fun reset()
     fun getData(address: Int): Byte
-    fun setData(address: Int, value: Byte): Byte
+    fun setData(address: Int, value: Byte)
     fun copy(): Microprocessor
     fun copyFrom(other: Microprocessor)
 }

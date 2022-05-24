@@ -1,8 +1,11 @@
 package microprocessor
 
 import instrunctions.Instruction
+import memory.MemoryMB
 
-class MicroprocessorImpl: Microprocessor {
+class MicroprocessorImpl: Microprocessor, Cloneable {
+    private val memory: MemoryMB = MemoryMB()
+
     override var acumulatorA: Byte = 0
     override var acumulatorB: Byte = 0
     override var programCounter: Byte = 0
@@ -12,7 +15,8 @@ class MicroprocessorImpl: Microprocessor {
     }
 
     override fun advanceProgram() {
-        this.programCounter.inc()
+        val pc: Int = this.programCounter.toInt() + 1
+        this.programCounter = pc.toByte()
     }
 
     override fun reset() {
@@ -20,18 +24,26 @@ class MicroprocessorImpl: Microprocessor {
     }
 
     override fun getData(address: Int): Byte {
-        TODO("Not yet implemented")
+        return memory.data[address]
     }
 
-    override fun setData(address: Int, value: Byte): Byte {
-        TODO("Not yet implemented")
+    override fun setData(address: Int, value: Byte) {
+        memory.data[address] = value
     }
 
     override fun copy(): Microprocessor {
-        TODO("Not yet implemented")
+        val microprocessor: Microprocessor = MicroprocessorImpl()
+
+        microprocessor.programCounter = this.programCounter
+        microprocessor.acumulatorA = this.acumulatorA
+        microprocessor.acumulatorB = this.acumulatorB
+
+        return microprocessor
     }
 
     override fun copyFrom(other: Microprocessor) {
-        TODO("Not yet implemented")
+        this.programCounter = other.programCounter
+        this.acumulatorA = other.acumulatorA
+        this.acumulatorB = other.acumulatorB
     }
 }

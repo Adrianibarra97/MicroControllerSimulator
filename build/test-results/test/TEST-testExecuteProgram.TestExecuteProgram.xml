@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="testExecuteProgram.TestExecuteProgram" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-05-24T07:43:03" hostname="DESKTOP-J922GUG" time="0.13">
+  <properties/>
+  <testcase name="Successfully run the NOP program." classname="testExecuteProgram.TestExecuteProgram" time="0.029"/>
+  <testcase name="Successfully run the ADD1 program." classname="testExecuteProgram.TestExecuteProgram" time="0.003"/>
+  <testcase name="Successfully run the ADD2 program." classname="testExecuteProgram.TestExecuteProgram" time="0.003"/>
+  <testcase name="Successfully run the ADD3(result grater than one byte) program." classname="testExecuteProgram.TestExecuteProgram" time="0.001"/>
+  <testcase name="Successfully run the DIV(try dividing by zero) program." classname="testExecuteProgram.TestExecuteProgram" time="0.002"/>
+  <testcase name="podemos deshacer la instrucción SWAP" classname="testExecuteProgram.TestExecuteProgram" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
