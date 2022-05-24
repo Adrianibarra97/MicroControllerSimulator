@@ -2,5 +2,4 @@
 
 ### Instructions:
 
-*NOP:*...
-...This instruction only increment the program counter.
+NOP:... ...This instruction only increment the program counter.
