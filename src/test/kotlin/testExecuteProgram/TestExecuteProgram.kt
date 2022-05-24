@@ -1,3 +1,5 @@
+package testExecuteProgram
+
 import instrunctions.NOP
 import microprocessor.Microprocessor
 import io.kotest.core.spec.IsolationMode
