@@ -1,6 +1,8 @@
 package testExecuteProgram
 
+import instrunctions.LODV
 import instrunctions.NOP
+import instrunctions.SWAP
 import microprocessor.Microprocessor
 import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.DescribeSpec
