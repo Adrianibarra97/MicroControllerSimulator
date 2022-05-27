@@ -136,7 +136,8 @@ class TestExecuteProgram: DescribeSpec({
             //ACT:
             microprocessor.run(listOf(
                 LODV(15), swap, LODV(26),
-                WHNZ(listOf(add, swap)))
+                WHNZ(listOf(add, swap))
+            )
             )
 
             //ASSERT:
