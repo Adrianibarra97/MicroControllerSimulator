@@ -1,5 +1,6 @@
-package instrunctions
+package instrunctions.simpleInstructions
 
+import instrunctions.Instruction
 import microprocessor.Microprocessor
 
 class NOP: Instruction() {

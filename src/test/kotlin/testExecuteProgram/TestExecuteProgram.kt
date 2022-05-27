@@ -1,14 +1,13 @@
 package testExecuteProgram
 
 import instrunctions.*
-import io.kotest.assertions.throwables.shouldThrow
-import io.kotest.assertions.throwables.shouldThrowExactly
+import instrunctions.compoundInstructions.IFNZ
+import instrunctions.compoundInstructions.WHNZ
+import instrunctions.simpleInstructions.*
 import microprocessor.Microprocessor
 import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
-import io.kotest.matchers.string.startWith
 import microprocessor.MicroprocessorImpl
 
 class TestExecuteProgram: DescribeSpec({
@@ -46,7 +45,8 @@ class TestExecuteProgram: DescribeSpec({
 
         it("Successfully run the ADD2 program.") {
             //ACT:
-            microprocessor.run(listOf(LODV(2), STR(0), LODV(8), swap,
+            microprocessor.run(listOf(
+                LODV(2), STR(0), LODV(8), swap,
                 LODV(5), add, swap, LOD(0), add))
 
             //ASSERT:
@@ -75,7 +75,7 @@ class TestExecuteProgram: DescribeSpec({
             //microprocessor.acumulatorB.shouldBe(0)
         }
 
-        it("podemos deshacer la instrucción SWAP") {
+        it("Try undoing the swap statement.") {
             //ACT:
             microprocessor.run(listOf(LODV(25), swap))
 
@@ -91,5 +91,58 @@ class TestExecuteProgram: DescribeSpec({
             microprocessor.acumulatorB.shouldBe(0)
         }
 
+//        it("Test the program with IFNZ where the condition is met.") {
+//            //ACT:
+//            microprocessor.run(listOf(
+//                LODV(15), swap, LODV(26),
+//                    IFNZ(listOf(add, swap)))
+//            )
+//
+//            //ASSERT:
+//            microprocessor.programCounter.shouldBe(6)
+//            microprocessor.acumulatorA.shouldBe(0)
+//            microprocessor.acumulatorB.shouldBe(41)
+//        }
+
+        it("Test the program with IFNZ where the condition is not met.") {
+            //ACT:
+            microprocessor.run(listOf(
+                LODV(15), swap, LODV(26),
+                IFNZ(listOf(add, swap))
+            )
+            )
+
+            //ASSERT:
+            microprocessor.programCounter.shouldBe(4)
+            microprocessor.acumulatorA.shouldBe(26)
+            microprocessor.acumulatorB.shouldBe(15)
+        }
+
+//        it("Test the program with WHNZ where the condition is met.") {
+//            //ACT:
+//            microprocessor.run(listOf(
+//                LODV(15), swap, LODV(26),
+//                WHNZ(listOf(add, swap))
+//            )
+//            )
+//
+//            //ASSERT:
+//            microprocessor.programCounter.shouldBe(6)
+//            microprocessor.acumulatorA.shouldBe(0)
+//            microprocessor.acumulatorB.shouldBe(41)
+//        }
+
+        it("Test the program with WHNZ where the condition is not met.") {
+            //ACT:
+            microprocessor.run(listOf(
+                LODV(15), swap, LODV(26),
+                WHNZ(listOf(add, swap)))
+            )
+
+            //ASSERT:
+            microprocessor.programCounter.shouldBe(4)
+            microprocessor.acumulatorA.shouldBe(26)
+            microprocessor.acumulatorB.shouldBe(15)
+        }
     }
 })

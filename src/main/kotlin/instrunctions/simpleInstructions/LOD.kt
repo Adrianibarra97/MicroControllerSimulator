@@ -1,5 +1,6 @@
-package instrunctions
+package instrunctions.simpleInstructions
 
+import instrunctions.Instruction
 import microprocessor.Microprocessor
 
 class LOD(val addres: Int): Instruction() {
